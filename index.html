@@ -15,6 +15,8 @@
     .site-header, .site-footer { background: #151923; padding: 10px 20px; }
     .site-header .container, .site-footer .container { display: flex; justify-content: space-between; align-items: center; }
     .nav a { margin: 0 10px; }
+    /* (선택) 카운터 스타일 */
+    #counters { margin: 12px auto 0; font-size: 14px; opacity: .9; width: max-content; padding: 6px 10px; border: 1px solid #242a36; border-radius: 10px; background: #151923; }
   </style>
 </head>
 <body>
@@ -32,6 +34,12 @@
 
   <main>
     <h1>GraniteShares ETF 목록</h1>
+
+    <!-- ✅ 카운터는 body 안, 여기처럼 넣으세요 -->
+    <div id="counters">
+      👀 <span id="pageviews">…</span> | 🧑‍🤝‍🧑 <span id="visitors">…</span>
+    </div>
+
     <table>
       <thead>
         <tr>
@@ -67,24 +75,24 @@
         <tr><td>GraniteShares 2x Long NOW Daily ETF</td><td>NOWL</td></tr>
         <tr><td>GraniteShares 2x Short NVDA Daily ETF</td><td>NVD</td></tr>
         <tr><td>GraniteShares 2x Long NVDA Daily ETF</td><td>NVDL</td></tr>
-      <tr><td>GraniteShares YieldBOOST NVDA ETF</td><td>NVYY</td></tr>
-      <tr><td>GraniteShares 2x Long PDD Daily ETF</td><td>PDDL</td></tr>
-      <tr><td>GraniteShares Platinum Trust</td><td>PLTM</td></tr>
-      <tr><td>GraniteShares 2x Long PLTR Daily ETF</td><td>PTIR</td></tr>
-      <tr><td>GraniteShares 2x Long QCOM Daily ETF</td><td>QCML</td></tr>
-      <tr><td>GraniteShares 2x Long RDDT Daily ETF</td><td>RDTL</td></tr>
-      <tr><td>GraniteShares 2x Long RIVN Daily ETF</td><td>RVNL</td></tr>
-      <tr><td>GraniteShares 2x Long SMCI Daily ETF</td><td>SMCL</td></tr>
-      <tr><td>GraniteShares YieldBOOST QQQ ETF</td><td>TQQY</td></tr>
-      <tr><td>GraniteShares 2x Short TSLA Daily ETF</td><td>TSDD</td></tr>
-      <tr><td>GraniteShares 1.25x Long TSLA Daily ETF</td><td>TSL</td></tr>
-      <tr><td>GraniteShares 2x Long TSLA Daily ETF</td><td>TSLR</td></tr>
-      <tr><td>GraniteShares 2x Long TSM Daily ETF</td><td>TSMU</td></tr>
-      <tr><td>GraniteShares YieldBOOST TSLA ETF</td><td>TSYY</td></tr>
-      <tr><td>GraniteShares 2x Long UBER Daily ETF</td><td>UBRL</td></tr>
-      <tr><td>GraniteShares 2x Long VRT Daily ETF</td><td>VRTL</td></tr>
-      <tr><td>GraniteShares YieldBOOST Bitcoin ETF</td><td>XBTY</td></tr>
-      <tr><td>GraniteShares YieldBOOST SPY ETF</td><td>YSPY</td></tr>
+        <tr><td>GraniteShares YieldBOOST NVDA ETF</td><td>NVYY</td></tr>
+        <tr><td>GraniteShares 2x Long PDD Daily ETF</td><td>PDDL</td></tr>
+        <tr><td>GraniteShares Platinum Trust</td><td>PLTM</td></tr>
+        <tr><td>GraniteShares 2x Long PLTR Daily ETF</td><td>PTIR</td></tr>
+        <tr><td>GraniteShares 2x Long QCOM Daily ETF</td><td>QCML</td></tr>
+        <tr><td>GraniteShares 2x Long RDDT Daily ETF</td><td>RDTL</td></tr>
+        <tr><td>GraniteShares 2x Long RIVN Daily ETF</td><td>RVNL</td></tr>
+        <tr><td>GraniteShares 2x Long SMCI Daily ETF</td><td>SMCL</td></tr>
+        <tr><td>GraniteShares YieldBOOST QQQ ETF</td><td>TQQY</td></tr>
+        <tr><td>GraniteShares 2x Short TSLA Daily ETF</td><td>TSDD</td></tr>
+        <tr><td>GraniteShares 1.25x Long TSLA Daily ETF</td><td>TSL</td></tr>
+        <tr><td>GraniteShares 2x Long TSLA Daily ETF</td><td>TSLR</td></tr>
+        <tr><td>GraniteShares 2x Long TSM Daily ETF</td><td>TSMU</td></tr>
+        <tr><td>GraniteShares YieldBOOST TSLA ETF</td><td>TSYY</td></tr>
+        <tr><td>GraniteShares 2x Long UBER Daily ETF</td><td>UBRL</td></tr>
+        <tr><td>GraniteShares 2x Long VRT Daily ETF</td><td>VRTL</td></tr>
+        <tr><td>GraniteShares YieldBOOST Bitcoin ETF</td><td>XBTY</td></tr>
+        <tr><td>GraniteShares YieldBOOST SPY ETF</td><td>YSPY</td></tr>
       </tbody>
     </table>
   </main>
@@ -97,6 +105,55 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- CountAPI: 페이지뷰/방문자 카운트 -->
+  <script>
+    // -------- 설정 (프로젝트 고유 키) --------
+    const NS  = "graniteshares-etf"; // 예: 고유 네임스페이스
+    const KEY = "homepage";          // 예: 페이지 키
+    // --------------------------------------
+
+    const pvEl = document.getElementById("pageviews");
+    const uvEl = document.getElementById("visitors");
+
+    const api = (path) => fetch(`https://api.countapi.xyz/${path}`)
+      .then(r => r.json())
+      .catch(() => null);
+
+    async function bumpPageViews() {
+      const res = await api(`hit/${encodeURIComponent(NS)}/${encodeURIComponent(KEY)}-pv`);
+      if (res && typeof res.value === "number") {
+        pvEl.textContent = `페이지뷰 ${res.value.toLocaleString()}`;
+      } else {
+        pvEl.textContent = "페이지뷰 -";
+      }
+    }
+
+    async function bumpVisitorsDaily() {
+      const storeKey = `visitors-cooldown-${NS}-${KEY}`;
+      const last = Number(localStorage.getItem(storeKey) || 0);
+      const now = Date.now();
+      const oneDay = 24 * 60 * 60 * 1000;
+
+      let path;
+      if (now - last > oneDay) {
+        path = `hit/${encodeURIComponent(NS)}/${encodeURIComponent(KEY)}-uv`;
+        localStorage.setItem(storeKey, String(now));
+      } else {
+        path = `get/${encodeURIComponent(NS)}/${encodeURIComponent(KEY)}-uv`;
+      }
+
+      const res = await api(path);
+      if (res && typeof res.value === "number") {
+        uvEl.textContent = `방문자 ${res.value.toLocaleString()}`;
+      } else {
+        uvEl.textContent = "방문자 -";
+      }
+    }
+
+    bumpPageViews();
+    bumpVisitorsDaily();
   </script>
 </body>
 </html>
