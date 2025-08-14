@@ -2,11 +2,20 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>나의 홈페이지</title>
-  <meta name="description" content="GitHub Pages로 만든 간단한 개인 홈페이지" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=" /> <!-- 임시 파비콘 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GraniteShares ETF 목록</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #0f1115; color: #eaeef5; margin: 0; padding: 20px; }
+    h1 { text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; border-bottom: 1px solid #242a36; }
+    th { background: #151923; position: sticky; top: 0; }
+    tr:hover { background: #1a1f2b; }
+    a { color: #7aa2ff; text-decoration: none; }
+    .site-header, .site-footer { background: #151923; padding: 10px 20px; }
+    .site-header .container, .site-footer .container { display: flex; justify-content: space-between; align-items: center; }
+    .nav a { margin: 0 10px; }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -22,83 +31,42 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <h1>안녕하세요 👋</h1>
-        <p>이 사이트는 <strong>GitHub Pages</strong>로 배포되었습니다.</p>
-        <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub 살펴보기</a>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container">
-        <h2>소개</h2>
-        <p>
-          간단한 정적 사이트 템플릿입니다. <code>index.html</code>, <code>styles.css</code>,
-          <code>script.js</code> 세 파일만으로 구성되어 있어 유지보수가 쉽습니다.
-        </p>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>프로젝트</h2>
-        <ul class="cards">
-          <li class="card">
-            <h3>프로젝트 A</h3>
-            <p>설명 텍스트. 깔끔한 카드 UI.</p>
-            <a href="#" class="card-link">자세히</a>
-          </li>
-          <li class="card">
-            <h3>프로젝트 B</h3>
-            <p>설명 텍스트. 링크만 교체하면 끝.</p>
-            <a href="#" class="card-link">자세히</a>
-          </li>
-          <li class="card">
-            <h3>프로젝트 C</h3>
-            <p>설명 텍스트. 필요 없으면 삭제.</p>
-            <a href="#" class="card-link">자세히</a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>연락처</h2>
-        <ul>
-          <li>Email: <a href="mailto:you@example.com">you@example.com</a></li>
-          <li>GitHub: <a href="https://github.com/your-id" target="_blank" rel="noreferrer">@your-id</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- (선택) 댓글 달기: Giscus 사용 예시
-      1) https://giscus.app 에서 자신의 리포로 설정값 생성
-      2) 아래 스크립트의 data-* 값 교체 후 주석 해제
-    -->
-    <!--
-    <section class="section">
-      <div class="container">
-        <h2>댓글</h2>
-        <script src="https://giscus.app/client.js"
-          data-repo="your-id/your-repo"
-          data-repo-id="REPO_ID"
-          data-category="General"
-          data-category-id="CATEGORY_ID"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="light"
-          data-lang="ko"
-          crossorigin="anonymous"
-          async>
-        </script>
-      </div>
-    </section>
-    -->
+    <h1>GraniteShares ETF 목록</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>ticker</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>GraniteShares 2x Long AAPL Daily ETF</td><td>AAPB</td></tr>
+        <tr><td>GraniteShares 2x Long AMD Daily ETF</td><td>AMDL</td></tr>
+        <tr><td>GraniteShares 2x Long AMZN Daily ETF</td><td>AMZZ</td></tr>
+        <tr><td>GraniteShares 2x Long AVGO Daily ETF</td><td>AVGU</td></tr>
+        <tr><td>GraniteShares 2x Long BABA Daily ETF</td><td>BABX</td></tr>
+        <tr><td>GraniteShares Gold Trust</td><td>BAR</td></tr>
+        <tr><td>GraniteShares Blmbrg CmdtyBrdStr NoK1ETF</td><td>COMB</td></tr>
+        <tr><td>GraniteShares 2x Short COIN Daily ETF</td><td>CONI</td></tr>
+        <tr><td>GraniteShares 2x Long COIN Daily ETF</td><td>CONL</td></tr>
+        <tr><td>GraniteShares YieldBOOST COIN ETF</td><td>COYY</td></tr>
+        <tr><td>GraniteShares 2x Long CRWD Daily ETF</td><td>CRWL</td></tr>
+        <tr><td>GraniteShares 2x Long DELL Daily ETF</td><td>DLLL</td></tr>
+        <tr><td>GraniteShares Nasdaq Sel Disruptors ETF</td><td>DRUP</td></tr>
+        <tr><td>GraniteShares 2x Long META Daily ETF</td><td>FBL</td></tr>
+        <tr><td>GraniteShares HIPS US High Income ETF</td><td>HIPS</td></tr>
+        <tr><td>GraniteShares 2x Long INTC Daily ETF</td><td>INTW</td></tr>
+        <tr><td>GraniteShares 2x Long IONQ Daily ETF</td><td>IONL</td></tr>
+        <tr><td>GraniteShares 2x Long LCID Daily ETF</td><td>LCDL</td></tr>
+        <tr><td>GraniteShares 2x Long MARA Daily ETF</td><td>MRAL</td></tr>
+        <tr><td>GraniteShares 2x Short MSTR Daily ETF</td><td>MSDD</td></tr>
+        <tr><td>GraniteShares 2x Long MSFT Daily ETF</td><td>MSFL</td></tr>
+        <tr><td>GraniteShares 2x Long MSTR Daily ETF</td><td>MSTP</td></tr>
+        <tr><td>GraniteShares 2x Long MU Daily ETF</td><td>MULL</td></tr>
+        <tr><td>GraniteShares 2x Long MRVL Daily ETF</td><td>MVLL</td></tr>
+        <tr><td>GraniteShares 2x Long NOW Daily ETF</td><td>NOWL</td></tr>
+      </tbody>
+    </table>
   </main>
 
   <footer class="site-footer">
@@ -107,6 +75,8 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
